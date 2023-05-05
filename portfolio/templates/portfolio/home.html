@@ -1,0 +1,47 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+
+<body>
+{% load static %}
+
+<div class="row justify-content-center my-3">
+    <div class="col-4">
+        <img src="{% static 'portfolio/my_foto.jpg' %}" height='400'>
+    </div>
+</div>
+<div class="row justify-content-center mb-3">
+    <div class="col-md-9 text-center">
+        <br>
+        <h2 class="mt-5">Портфолио работ</h2>
+        <hr>
+    </div>
+</div>
+
+<div class="container-fluid mt-5">
+    <div class="container">
+        <div class="row">
+            {% for project in projects %}
+            <div class="col-md-4 mb-3">
+                <div class="card h-100" class="shadow-sm">
+                    <img src="{{ project.image.url }}" height="300" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ project.title }}</h5>
+                        <p class="card-text" height="100">{{ project.description|safe|truncatechars:250 }}</p>
+                    </div>
+                    <br>
+                    <div class="card-footer">
+                        {% if project.url %}
+                        <a href="{{ project.url }}" class="btn btn-primary" target="_blank">Подробнее на GitHub</a>
+                        {% else %}
+                        <a  class="btn btn-primary" target="_blank">Подробнее</a>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

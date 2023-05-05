@@ -1,0 +1,10 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+
+<body>
+<h1 class="text-center mt-5" id="blogdetailtitle">{{ blog.title }}</h1>
+<p>{{ blog.description|safe}}</p>
+</body>
+</html>
+
+{% endblock %}
